@@ -1,0 +1,13 @@
+# ignore these files
+.idea
+.vscode
+
+# ignore these folders
+target
+bin
+
+# ignore compression file
+*.rar
+*.zip
+*.jar
+*.tar
