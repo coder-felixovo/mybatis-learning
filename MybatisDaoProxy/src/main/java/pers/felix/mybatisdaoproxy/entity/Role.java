@@ -1,4 +1,4 @@
-package pers.felix.mybatisdaoproxy.domain;
+package pers.felix.mybatisdaoproxy.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

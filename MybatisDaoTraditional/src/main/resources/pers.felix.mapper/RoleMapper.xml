@@ -3,7 +3,7 @@
 <mapper namespace="RoleMapper">
 
     <!-- 查询role表全部数据 -->
-    <select id="selectAll" resultType="pers.felix.mybatisdaotraditionnal.entity.Role">
+    <select id="selectAll" resultType="Role">
         select
             role_id as roleId,
             role_name as roleName,

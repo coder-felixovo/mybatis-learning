@@ -5,7 +5,6 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.junit.Test;
 import pers.felix.mybatisfirst.Role;
 
-import javax.annotation.Resource;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
@@ -22,10 +21,10 @@ public class FirstTest {
         // 加载核心配置文件 SqlMapConfig.xml
         InputStream resourceAsStream = Resources.getResourceAsStream("SqlMapConfig.xml");
 
-        // 获得SqlSession工厂对象
+        // 获得 SqlSession 工厂对象
         SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(resourceAsStream);
 
-        // 获得session对象
+        // 获得 sqlSession 对象
         SqlSession sqlSession = sqlSessionFactory.openSession();
 
         // 执行SQL语句

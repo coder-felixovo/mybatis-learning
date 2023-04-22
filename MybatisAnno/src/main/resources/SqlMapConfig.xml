@@ -3,10 +3,15 @@
 <configuration>
     <!-- properties 属性 -->
     <properties resource="Jdbc.properties"></properties>
+
     <!-- settings 设置 -->
+
     <!-- typeAliases 类型别名 -->
+
     <!-- objectFactory 对象工厂 -->
+
     <!-- plugins 插件 -->
+
     <!-- environments 环境 -->
     <environments default="development">
         <environment id="development">
@@ -19,6 +24,7 @@
             </dataSource>
         </environment>
     </environments>
+
     <!-- 加载映射文件 -->
     <mappers>
         <package name="pers.felix.mybatisanno.mapper"/>

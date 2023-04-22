@@ -3,7 +3,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.junit.Test;
-import pers.felix.mybatisdaoproxy.domain.Role;
+import pers.felix.mybatisdaoproxy.entity.Role;
 import pers.felix.mybatisdaoproxy.mapper.RoleMapper;
 
 import java.io.IOException;
@@ -29,7 +29,6 @@ public class InsertTest {
         SqlSession sqlSession = sqlSessionFactory.openSession(true);
         RoleMapper roleMapper = sqlSession.getMapper(RoleMapper.class);
         int result =  roleMapper.add(role);
-        sqlSession.commit();
         System.out.println(result);
         sqlSession.close();
     }

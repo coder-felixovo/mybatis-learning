@@ -2,8 +2,15 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="RoleMapper">
 
+    <!--
+        原始全路径：pers.felix.mybatisfirst.Role
+        在 SqlMapConfig.xml 中配置了 typeAlias
+        下面的 resultType 可以使用 alias 中的值
+        本例为
+    -->
+
     <!-- 查询role表数据 -->
-    <select id="selectAll" resultType="pers.felix.mybatisfirst.Role">
+    <select id="selectAll" resultType="Role">
         select
                role_id as roleId,
                role_name as roleName,
@@ -14,12 +21,12 @@
     </select>
 
     <!-- 新增一条role数据 -->
-    <insert id="addRole" parameterType="pers.felix.mybatisfirst.Role">
+    <insert id="addRole" parameterType="Role">
         insert into role values(#{roleId}, #{roleName}, #{roleAddr}, #{roleLevel}, #{roleCategory})
     </insert>
     
     <!-- 根据roleId修改roleName -->
-    <update id="updateRoleName" parameterType="pers.felix.mybatisfirst.Role">
+    <update id="updateRoleName" parameterType="Role">
         update role set role_name=#{roleName} where role_id=#{roleId}
     </update>
 

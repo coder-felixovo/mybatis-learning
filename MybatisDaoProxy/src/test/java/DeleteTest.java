@@ -19,10 +19,9 @@ public class DeleteTest {
         String id = "6";
         InputStream resourceAsStream = Resources.getResourceAsStream("SqlMapConfig.xml");
         SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(resourceAsStream);
-        SqlSession sqlSession = sqlSessionFactory.openSession();
+        SqlSession sqlSession = sqlSessionFactory.openSession(true);
         RoleMapper roleMapper = sqlSession.getMapper(RoleMapper.class);
         int result = roleMapper.deleteById(id);
-        sqlSession.commit();
         System.out.println(result); // 1
         sqlSession.close();
     }

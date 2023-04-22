@@ -3,7 +3,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.junit.Test;
-import pers.felix.mybatisdaoproxy.domain.Role;
+import pers.felix.mybatisdaoproxy.entity.Role;
 import pers.felix.mybatisdaoproxy.mapper.RoleMapper;
 
 import java.io.IOException;
@@ -34,7 +34,7 @@ public class SelectTest {
         SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(resourceAsStream);
         SqlSession sqlSession = sqlSessionFactory.openSession();
         RoleMapper roleMapper = sqlSession.getMapper(RoleMapper.class);
-        Role role = roleMapper.selectById("1");
+        Role role = roleMapper.selectById("6");
         System.out.println(role);
         sqlSession.close();
     }

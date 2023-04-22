@@ -24,6 +24,7 @@ public class CrudTest {
         role.setRoleAddr("东京");
         role.setRoleLevel("特级");
         role.setRoleCategory("咒术师");
+
         InputStream resourceAsStream = Resources.getResourceAsStream("SqlMapConfig.xml");
         SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(resourceAsStream);
         SqlSession sqlSession = sqlSessionFactory.openSession();
@@ -37,7 +38,8 @@ public class CrudTest {
     public void updateTest() throws IOException {
         Role role = new Role();
         role.setRoleId("1");
-        role.setRoleName("五条悟-update");
+        role.setRoleName("五条悟-update123");
+
         InputStream resourceAsStream = Resources.getResourceAsStream("SqlMapConfig.xml");
         SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(resourceAsStream);
         SqlSession sqlSession = sqlSessionFactory.openSession();

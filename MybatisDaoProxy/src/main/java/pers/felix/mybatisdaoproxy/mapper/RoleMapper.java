@@ -1,6 +1,6 @@
 package pers.felix.mybatisdaoproxy.mapper;
 
-import pers.felix.mybatisdaoproxy.domain.Role;
+import pers.felix.mybatisdaoproxy.entity.Role;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
