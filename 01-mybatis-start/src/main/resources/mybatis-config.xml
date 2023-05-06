@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<!DOCTYPE configuration PUBLIC
+        "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
     <!-- properties 属性 -->
     <properties resource="Jdbc.properties"></properties>
@@ -8,7 +10,7 @@
 
     <!-- typeAliases 类型别名 -->
     <typeAliases>
-        <typeAlias type="pers.felix.mybatisfirst.Role" alias="Role"></typeAlias>
+        <typeAlias type="pers.felix.mybatisstart.entity.Person" alias="Person"></typeAlias>
     </typeAliases>
 
     <!-- objectFactory 对象工厂 -->
@@ -30,7 +32,7 @@
 
     <!-- 加载映射文件 -->
     <mappers>
-        <mapper resource="pers.felix.mapper/RoleMapper.xml"></mapper>
+        <mapper resource="mapper/PersonMapper.xml"></mapper>
     </mappers>
 
 </configuration>

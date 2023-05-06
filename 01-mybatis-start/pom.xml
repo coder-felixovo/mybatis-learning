@@ -5,9 +5,9 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>pers.felix</groupId>
-    <artifactId>MybatisFirst</artifactId>
+    <artifactId>mybatis-start</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <name>MybatisFirst</name>
+    <name>mybatis-start</name>
     <packaging>war</packaging>
 
     <properties>
