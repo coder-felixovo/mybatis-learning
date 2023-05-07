@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="pers.felix.mybatisdynamic.mapper.EmployeeMapper">
+
+    <!-- sql重复语句提取 -->
+    <sql id="selectFromRole">select id, name, dept_id from employee</sql>
+
+    <select id="selectEmployeeByCondition" parameterType="pers.felix.mybatisdynamic.entity.Employee" resultType="pers.felix.mybatisdynamic.entity.Employee">
+        select
+            id, name, dept_id as deptId
+        from employee
+        <where>
+            <if test="id!=null">
+                and id=#{id}
+            </if>
+            <if test="name!=null">
+                and name=#{name}
+            </if>
+        </where>
+    </select>
+
+    <select id="selectEmployeeByIds" parameterType="list" resultType="pers.felix.mybatisdynamic.entity.Employee">
+        select
+            id,
+            name,
+            dept_id as deptId
+        from employee
+        <where>
+            <foreach collection="list" open="id in(" close=")" item="id" separator=",">
+                #{id}
+            </foreach>
+        </where>
+    </select>
+
+</mapper>

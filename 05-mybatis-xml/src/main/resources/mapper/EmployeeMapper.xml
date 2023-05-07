@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="pers.felix.mybatismultiple.mapper.EmployeeMapper">
+
+    <resultMap id="employeeAndDepartmentMap" type="pers.felix.mybatismultiple.entity.Employee">
+        <result column="eid" property="id"></result>
+        <result column="ename" property="name"></result>
+        <result column="edeptid" property="deptId"></result>
+        <association property="department" javaType="pers.felix.mybatismultiple.entity.Department">
+            <result column="did" property="id"></result>
+            <result column="dname" property="name"></result>
+        </association>
+    </resultMap>
+    <select id="selectEmployeeByIdWithDepartment" resultMap="employeeAndDepartmentMap">
+        SELECT
+            e.id eid,
+            e.name ename,
+            e.dept_id edeptid,
+            d.id did,
+            d.name dname
+        FROM employee e, department d
+        WHERE
+            e.id = #{id}
+            AND e.dept_id = d.id
+    </select>
+
+    <resultMap id="allEmployeeAndRole" type="pers.felix.mybatismultiple.entity.Employee">
+        <result column="id" property="id"></result>
+        <result column="name" property="name"></result>
+        <collection
+                property="roleList"
+                javaType="list"
+                ofType="role"
+                column="id"
+                select="pers.felix.mybatismultiple.mapper.RoleMapper.selectRoleByEmployeeId">
+        </collection>
+    </resultMap>
+    <select id="selectAllEmployeeWithRole" resultMap="allEmployeeAndRole">
+        SELECT id, name FROM employee
+    </select>
+
+</mapper>

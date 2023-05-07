@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="pers.felix.mybatismultiple.mapper.DepartmentMapper">
+    
+    <insert id="insertDepartment" parameterType="pers.felix.mybatismultiple.entity.Department">
+        INSERT INTO department (id, name) VALUES (#{id}, #{name})
+    </insert>
+
+    <delete id="deleteDepartment" parameterType="int">
+        DELETE FROM department WHERE id=#{id}
+    </delete>
+
+    <select id="selectAllDepartment" resultType="pers.felix.mybatismultiple.entity.Department">
+        SELECT id, name FROM department
+    </select>
+
+    <update id="updateDepartmentName">
+        UPDATE department SET name=#{name} WHERE id=#{id}
+    </update>
+
+    <resultMap id="aDepartmentWithEmployee" type="pers.felix.mybatismultiple.entity.Department">
+        <result column="did" property="id"></result>
+        <result column="dname" property="name"></result>
+        <collection property="employeeList" javaType="List" ofType="pers.felix.mybatismultiple.entity.Employee">
+            <id column="eid" property="id"></id>
+            <result column="ename" property="name"></result>
+            <result column="edeptid" property="deptId"></result>
+        </collection>
+    </resultMap>
+    <select id="selectDepartmentByIdWithEmployee" resultMap="aDepartmentWithEmployee">
+        SELECT
+            d.id did,
+            d.name dname,
+            e.id eid,
+            e.name ename,
+            e.dept_id edeptid
+        FROM
+            department d,
+            employee e
+        WHERE
+            d.id=#{id}
+            AND d.id = e.dept_id
+    </select>
+
+</mapper>

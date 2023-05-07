@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="pers.felix.mybatisdaoproxy.mapper.PersonMapper">
+
+    <!-- 查询全部人员 -->
+    <select id="selectPeople" resultType="pers.felix.mybatisdaoproxy.entity.Person">
+        SELECT id, name, age, address FROM person
+    </select>
+
+    <!-- 根据id修改人员名字 -->
+    <update id="updatePersonNameById">
+        UPDATE person SET name=#{name} WHERE id=#{id}
+    </update>
+
+    <!-- 根据id删除人员 -->
+    <delete id="deletePersonById">
+        DELETE FROM person where id=#{id}
+    </delete>
+
+    <!-- 新增人员 -->
+    <insert id="insertPerson">
+        INSERT INTO person(id, name, age, address)
+        VALUES(#{id}, #{name}, #{age}, #{address})
+    </insert>
+
+    <!-- 多条件查询 -->
+    <select id="selectByMultipleCondition" resultType="pers.felix.mybatisdaoproxy.entity.Person">
+        SELECT id, name, age, address FROM person WHERE
+        address LIKE #{address}
+        AND age LIKE #{age}
+    </select>
+
+    <!-- 单条件动态查询 -->
+    <select id="selectBySingleCondition" resultType="pers.felix.mybatisdaoproxy.entity.Person">
+        SELECT id, name, age, address FROM person
+        <where>
+            <choose>
+                <when test="name != null">
+                    name like #{name}
+                </when>
+                <when test="age != null">
+                    age like #{age}
+                </when>
+                <when test="address != null">
+                    address like #{address}
+                </when>
+            </choose>
+        </where>
+    </select>
+
+</mapper>
