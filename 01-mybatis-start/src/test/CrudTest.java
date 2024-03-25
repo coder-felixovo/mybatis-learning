@@ -5,7 +5,7 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import pers.felix.mybatisstart.entity.Person;
+import pers.felix.mybatisstart.entity.User;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -38,32 +38,41 @@ public class CrudTest {
     }
 
     @Test
-    public void testInsert() throws IOException {
-        // 生成Role实例
-        Person person = new Person();
-        person.setId(1);
-        person.setName("岩户铃芽");
-        person.setAge(17);
-        person.setAddress("九州");
-        int affectedRows = sqlSession.insert("PersonMapper.insertPerson", person);
+    public void insertTest() throws IOException {
+
+        User user = new User();
+        user.setId(1);
+        user.setName("岩户铃芽");
+        user.setAge(17);
+
+        User user1 = new User();
+        user1.setId(2);
+        user1.setName("宗像草太");
+        user1.setAge(22);
+
+        int affectedRows = sqlSession.insert("UserMapper.addUser", user);
         System.out.println(affectedRows); // 1
+
+        affectedRows = sqlSession.insert("UserMapper.addUser", user1);
+        System.out.println(affectedRows);
+
         sqlSession.commit();
         sqlSession.close();
     }
 
     @Test
-    public void testSelect() {
-        List<Person> personList = sqlSession.selectList("PersonMapper.selectAll");
+    public void selectTest() {
+        List<User> personList = sqlSession.selectList("UserMapper.getAllUser");
         System.out.println(personList);
         sqlSession.close();
     }
 
     @Test
-    public void testUpdate() throws IOException {
-        Person person = new Person();
-        person.setName("岩户铃芽-update");
-        person.setId(1);
-        int affectedRows = sqlSession.update("PersonMapper.updatePersonNameById", person);
+    public void updateTest() throws IOException {
+        User user = new User();
+        user.setName("岩户铃芽-update");
+        user.setId(1);
+        int affectedRows = sqlSession.update("UserMapper.updateNameById", user);
         System.out.println(affectedRows); // 1
         sqlSession.commit();
         sqlSession.close();
@@ -71,7 +80,7 @@ public class CrudTest {
 
     @Test
     public void deleteTest() throws IOException {
-        int affectedRows = sqlSession.delete("PersonMapper.deletePersonById","1");
+        int affectedRows = sqlSession.delete("UserMapper.deleteUserById",2);
         System.out.println(affectedRows); // 1
         sqlSession.commit();
         sqlSession.close();

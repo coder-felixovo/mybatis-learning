@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC
+        "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="UserMapper">
+
+    <insert id="addUser" parameterType="pers.felix.mybatisstart.entity.User">
+        INSERT INTO user VALUES(#{id}, #{name}, #{age})
+    </insert>
+
+    <select id="getAllUser" resultType="pers.felix.mybatisstart.entity.User">
+        SELECT id, name, age FROM user
+    </select>
+
+    <update id="updateNameById" parameterType="pers.felix.mybatisstart.entity.User">
+        UPDATE user SET name=#{name} where id=#{id}
+    </update>
+
+    <delete id="deleteUserById" parameterType="Integer">
+        DELETE FROM user WHERE id=#{id}
+    </delete>
+
+</mapper>
