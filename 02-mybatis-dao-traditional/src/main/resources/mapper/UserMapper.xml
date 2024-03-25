@@ -2,10 +2,10 @@
 <!DOCTYPE mapper PUBLIC
         "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="PersonMapper">
+<mapper namespace="UserMapper">
 
-    <select id="selectAll" resultType="pers.felix.mybatisdaotraditional.entity.Person">
-        SELECT id, name, age, address FROM person
+    <select id="getAllUsers" resultType="pers.felix.mybatisdaotraditional.entity.User">
+        SELECT id, name, age FROM user
     </select>
 
 </mapper>

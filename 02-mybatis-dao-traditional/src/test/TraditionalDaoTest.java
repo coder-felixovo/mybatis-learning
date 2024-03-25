@@ -1,7 +1,7 @@
 import org.junit.Test;
-import pers.felix.mybatisdaotraditional.dao.PersonDao;
-import pers.felix.mybatisdaotraditional.dao.impl.PersonDaoImpl;
-import pers.felix.mybatisdaotraditional.entity.Person;
+import pers.felix.mybatisdaotraditional.dao.UserDao;
+import pers.felix.mybatisdaotraditional.dao.impl.UserDaoImpl;
+import pers.felix.mybatisdaotraditional.entity.User;
 
 import java.io.IOException;
 import java.util.List;
@@ -14,8 +14,8 @@ import java.util.List;
 public class TraditionalDaoTest {
     @Test
     public void testSelectAll() throws IOException {
-        PersonDao personDao = new PersonDaoImpl();
-        List<Person> all = personDao.selectAll();
+        UserDao userDao = new UserDaoImpl();
+        List<User> all = userDao.getAllUsers();
         System.out.println(all);
     }
 }

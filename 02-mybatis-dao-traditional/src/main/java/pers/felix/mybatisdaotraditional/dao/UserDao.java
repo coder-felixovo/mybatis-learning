@@ -1,6 +1,6 @@
 package pers.felix.mybatisdaotraditional.dao;
 
-import pers.felix.mybatisdaotraditional.entity.Person;
+import pers.felix.mybatisdaotraditional.entity.User;
 
 import java.io.IOException;
 import java.util.List;
@@ -10,6 +10,6 @@ import java.util.List;
  * @date 2022/5/5 19:33
  * @description
  */
-public interface PersonDao {
-    List<Person> selectAll() throws IOException;
+public interface UserDao {
+    List<User> getAllUsers() throws IOException;
 }
