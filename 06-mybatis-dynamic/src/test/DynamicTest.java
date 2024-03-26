@@ -28,7 +28,7 @@ public class DynamicTest {
 
         Employee employee = new Employee();
         employee.setId(1);
-        employee.setName("zhangsan");
+        employee.setName("张三");
         Employee result = employeeMapper.selectEmployeeByCondition(employee);
         System.out.println(result);
     }
