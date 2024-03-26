@@ -14,8 +14,14 @@ import java.util.List;
  */
 public interface EmployeeMapper {
 
+    @Insert("INSERT INTO employee (id, name, dept_id) VALUES(#{id}, #{name}, #{deptId})")
+    int insertEmployee(Employee employee);
+
+    @Select("SELECT id, name FROM employee")
+    List<Employee> selectAllEmployee();
+
     // 根据id查询员工
-    @Select("SELECT id, name, dept_id FROM Employee WHERE id=#{id}")
+    @Select("SELECT id, name, dept_id FROM employee WHERE id=#{id}")
     Employee selectEmployeeById(int id);
 
     // 根据id查询员工，并查询其所在部门

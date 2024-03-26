@@ -43,6 +43,26 @@ public class RelationTest {
     }
 
     @Test
+    public void prepareData() {
+        // 添加部门
+        Department department = new Department();
+        department.setId(1);
+        department.setName("财务部");
+        departmentMapper.insertDepartment(department);
+
+        // 添加员工
+        Employee employee = new Employee();
+        employee.setId(1);
+        employee.setName("张三");
+        employee.setDeptId(1);
+        employeeMapper.insertEmployee(employee);
+
+        // 查询所有员工
+        List<Employee> employeeList = employeeMapper.selectAllEmployee();
+        System.out.println(employeeList);
+    }
+
+    @Test
     public void testOneToOne() {
         Employee employee = employeeMapper.selectEmployeeByIdWithDepartment(1);
         System.out.println(employee);
