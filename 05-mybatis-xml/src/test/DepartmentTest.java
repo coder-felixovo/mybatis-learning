@@ -1,3 +1,4 @@
+import lombok.Data;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -12,10 +13,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
 
-/**
- * @author felixovo
- * @date 2023-05-07 11:02:41
- */
 public class DepartmentTest {
     private InputStream inputStream;
     private SqlSessionFactory sqlSessionFactory;

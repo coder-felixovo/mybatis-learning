@@ -5,9 +5,9 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>felixovo.example</groupId>
-    <artifactId>MybatisMultiple</artifactId>
+    <artifactId>MybatisMultipleXml</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <name>MybatisMultiple</name>
+    <name>MybatisMultipleXml</name>
     <packaging>war</packaging>
 
     <properties>
