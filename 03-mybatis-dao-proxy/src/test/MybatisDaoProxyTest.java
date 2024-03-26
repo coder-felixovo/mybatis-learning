@@ -5,8 +5,8 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import pers.felix.mybatisdaoproxy.entity.Person;
-import pers.felix.mybatisdaoproxy.mapper.PersonMapper;
+import pers.felix.mybatisdaoproxy.entity.User;
+import pers.felix.mybatisdaoproxy.mapper.UserMapper;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -20,14 +20,14 @@ public class MybatisDaoProxyTest {
     private InputStream inputStream;
     private SqlSessionFactory sqlSessionFactory;
     private SqlSession sqlSession;
-    private PersonMapper personMapper;
+    private UserMapper userMapper;
 
     @Before
     public void before() throws IOException {
         inputStream = Resources.getResourceAsStream("mybatis-config.xml");
         sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
         sqlSession = sqlSessionFactory.openSession();
-        personMapper = sqlSession.getMapper(PersonMapper.class);
+        userMapper = sqlSession.getMapper(UserMapper.class);
     }
 
     @After
@@ -39,49 +39,55 @@ public class MybatisDaoProxyTest {
 
     @Test
     public void testInsert() {
-        Person person = new Person();
-        person.setId(1);
-        person.setName("岩户铃芽");
-        person.setAge(17);
-        person.setAddress("九州");
-        int affectedRows = personMapper.insertPerson(person);
-        System.out.println(affectedRows);
-    }
+        User user = new User();
+        user.setId(3);
+        user.setName("宫水三叶");
+        user.setAge(17);
 
-    @Test
-    public void testDelete() {
-        int affectedRows = personMapper.deletePersonById(100);
+        User user1 = new User();
+        user1.setId(100);
+        user1.setName("测试用户");
+        user1.setAge(18);
+
+        int affectedRows = userMapper.addUser(user);
+        System.out.println(affectedRows);
+        affectedRows = userMapper.addUser(user1);
         System.out.println(affectedRows);
     }
 
     @Test
     public void testSelect() {
-        List<Person> personList = personMapper.selectPeople();
+        List<User> personList = userMapper.getAllUsers();
         System.out.println(personList);
     }
 
     @Test
     public void testUpdate() {
-        Person person = new Person();
-        person.setId(100);
-        person.setName("测试-update");
-        int affectedRows = personMapper.updatePersonNameById(person);
+        User user = new User();
+        user.setId(100);
+        user.setName("测试-update");
+        int affectedRows = userMapper.updateNameById(user);
+        System.out.println(affectedRows);
+    }
+
+    @Test
+    public void testDelete() {
+        int affectedRows = userMapper.deleteById(100);
         System.out.println(affectedRows);
     }
 
     @Test
     public void testSelectByMultipleCondition() {
-        List<Person> personList = personMapper.selectByMultipleCondition("九州", 17);
+        List<User> personList = userMapper.selectByMultipleCondition("宫水三叶", 17);
         System.out.println(personList);
     }
 
     @Test
     public void testDynamic() {
-        Person person = new Person();
-        person.setName("岩户铃芽");
-//        person.setAge(17);
-//        person.setAddress("九州");
-        List<Person> personList = personMapper.selectBySingleCondition(person);
+        User user = new User();
+        user.setName("岩户铃芽");
+//        user.setAge(17);
+        List<User> personList = userMapper.selectBySingleCondition(user);
         System.out.println(personList);
     }
 }
